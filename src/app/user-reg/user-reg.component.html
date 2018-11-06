@@ -1,0 +1,94 @@
+<app-loading [class.hide]="!loading"></app-loading>
+<section style="padding: 0px 36px" [class.form-loading]="loading">
+  <div class="row">
+    <h5>User registration</h5>
+  </div>
+  
+  <div class="row">
+    
+    <form (ngSubmit)="submit()" [formGroup]='form' > 
+        <div class="col m12">
+          <mat-form-field>
+            <input matInput formControlName="regId" placeholder="Registral ID" class="uppercase"/>
+            <mat-error *ngIf="regId.invalid && regId.touched">
+              This field is required
+            </mat-error>
+          </mat-form-field>
+        </div>    
+        <div class="col m6">
+          <mat-form-field>
+            <input matInput formControlName="firstName" placeholder="firstName" class="capitalize"/>
+            <mat-error *ngIf="firstName.invalid && firstName.touched">
+              This field is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+    
+        <div class="col m6">
+          <mat-form-field>
+            <input matInput formControlName="middleName" placeholder="middelName" class="capitalize"/>
+            <mat-error *ngIf="middleName.invalid && middleName.touched">
+              This field is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col m12">
+          <mat-form-field>
+            <input matInput formControlName="lastName" placeholder="lastName" class="capitalize"/>
+            <mat-error *ngIf="lastName.invalid && lastName.touched">
+                This field is required
+              </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col m6">
+          <mat-form-field>
+            <mat-select formControlName="gender" placeholder="gender">
+              <mat-option value="M">Male</mat-option>
+              <mat-option value="F">Female</mat-option>
+            </mat-select>
+            <mat-error *ngIf="gender.invalid && gender.touched">
+                This field is required
+              </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col m6">
+          <mat-form-field>
+            <mat-select formControlName="role" placeholder="Role">
+              <mat-option value="1">Student</mat-option>
+              <mat-option value="2">Teacher</mat-option>
+              <mat-option value="3">Department Head</mat-option>
+            </mat-select>
+            <mat-error *ngIf="role.invalid && role.touched">
+              This field is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col m12">
+          <mat-form-field>
+            <input matInput type="number" formControlName="phone" placeholder="Phone" type="tel">
+            <mat-error *ngIf="phone.invalid && phone.touched">
+                This field is required
+              </mat-error>
+          </mat-form-field>
+        </div>
+    
+        <div class="col m12">
+          <mat-form-field>
+            <input matInput type="email" formControlName="email" placeholder="Email" type="email">
+            <mat-error *ngIf="(email.errors)?.required && email.touched">
+                This field is required
+              </mat-error>
+            <mat-error *ngIf="(email.errors)?.email && email.touched">
+                Invalid email address
+              </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col m12 ">
+          <button mat-flat-button color="primary" class="right" [disabled]="form.invalid">Register</button>
+        </div>
+        
+    </form>
+
+  </div>
+</section>
