@@ -1,6 +1,7 @@
 <app-loading [class.hide]="!loading"></app-loading>
 <section style="padding: 0px 36px" [class.form-loading]="loading">
   <div class="row">
+    <mat-icon style="cursor: pointer" id="close" class="right" (click)="_dialog.close()">close</mat-icon>
     <h5>User registration</h5>
   </div>
   
@@ -10,8 +11,11 @@
         <div class="col m12">
           <mat-form-field>
             <input matInput formControlName="regId" placeholder="Registral ID" class="uppercase"/>
-            <mat-error *ngIf="regId.invalid && regId.touched">
+            <mat-error *ngIf="(regId.errors)?.invalid && regId.touched">
               This field is required
+            </mat-error>
+            <mat-error *ngIf="(regId.errors)?.exist && regId.touched">
+              This registral id already exist
             </mat-error>
           </mat-form-field>
         </div>    
@@ -69,6 +73,9 @@
             <mat-error *ngIf="phone.invalid && phone.touched">
                 This field is required
               </mat-error>
+            <mat-error *ngIf="(regId.errors)?.exist && regId.touched">
+              This phone already exist
+            </mat-error>
           </mat-form-field>
         </div>
     
@@ -81,6 +88,9 @@
             <mat-error *ngIf="(email.errors)?.email && email.touched">
                 Invalid email address
               </mat-error>
+            <mat-error *ngIf="(regId.errors)?.exist && regId.touched">
+              This email already exist
+            </mat-error>
           </mat-form-field>
         </div>
 

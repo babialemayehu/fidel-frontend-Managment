@@ -23,4 +23,9 @@ export class TeachersComponent implements OnInit {
     ); 
   }
 
+  onUpdate(){
+    this.ngOnInit(); 
+  }
+
+
 }

@@ -1,4 +1,4 @@
 <mat-card>
   <p>Teacher</p>
-  <app-users-table [data]="users"></app-users-table>
+  <app-users-table [data]="users"  (update)="onUpdate()"></app-users-table>
 </mat-card>

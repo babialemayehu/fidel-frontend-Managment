@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
+  
 
   constructor(private _http: HttpClient) { }
 
@@ -20,5 +21,34 @@ export class UserService {
   getByRole($role: number): Observable<User[]>{
     const URL = this.root + "get/user/by role/"+$role; 
     return this._http.get<User[]>(URL); 
+  }
+  update(id: number, user: User): Observable<User> {
+    const URL = this.root + 'update/user/'+id; 
+    return this._http.put<User>(URL, user); 
+  }
+
+  delete(id: number): Observable<User>{
+    const URL = this.root + 'delte/user/'+id; 
+    return this._http.delete<User>(URL); 
+  }
+
+  reset(id: number): Observable<User>{
+    const URL = this.root + 'update/user/password/reset/'+id; 
+    return this._http.put<User>(URL, {}); 
+  }
+
+  idExist(regId: string): Observable<boolean>{
+    const URL = this.root + 'get/user/validate/regId exist/'+regId; 
+    return this._http.get<boolean>(URL); 
+  }
+
+  phoneExist(phone: string): Observable<boolean>{
+    const URL = this.root + 'get/user/validate/phone exist/'+phone; 
+    return this._http.get<boolean>(URL); 
+  }
+
+  emailExist(email: string): Observable<boolean>{
+    const URL = this.root + 'get/user/validate/email exist/'+email; 
+    return this._http.get<boolean>(URL); 
   }
 }

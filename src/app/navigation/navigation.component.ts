@@ -31,6 +31,7 @@ export class NavigationComponent {
   openUserReg(){
     this._modal.open(UserRegComponent, {
       width: '600px', 
+      disableClose: true, 
       data: {
         
       }

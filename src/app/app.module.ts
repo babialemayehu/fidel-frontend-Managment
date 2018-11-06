@@ -24,6 +24,7 @@ import { MatToolbarModule,
    MatNativeDateModule,
    MatInputModule,
    MatTabsModule } from '@angular/material';
+import { ContextMenuModule } from '../lib/context-menu.module';
 import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
 import { HttpClientModule} from "@angular/common/http";
 import { RouterModule } from "@angular/router"; 
@@ -36,6 +37,7 @@ import { UsersComponent } from './users/users.component';
 import { UsersTableComponent } from './users/users-table/users-table.component';
 import { StudentsComponent } from './users/students/students.component';
 import { TeachersComponent } from './users/teachers/teachers.component';
+import { ContextMenuComponent } from './context-menu/context-menu.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,11 @@ import { TeachersComponent } from './users/teachers/teachers.component';
     FloatingActionBtnComponent, 
     UserRegComponent, 
     LoadingComponent, 
-    UsersComponent, UsersTableComponent, StudentsComponent, TeachersComponent,
+    UsersComponent,
+    UsersTableComponent,
+    StudentsComponent,
+    TeachersComponent,
+    ContextMenuComponent
   ],
   imports: [
     HttpClientModule, 
@@ -72,10 +78,12 @@ import { TeachersComponent } from './users/teachers/teachers.component';
     MatNativeDateModule,
     MatInputModule,
     MatTabsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ContextMenuModule
   ],
   entryComponents: [
-    UserRegComponent
+    UserRegComponent,
+    ContextMenuComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

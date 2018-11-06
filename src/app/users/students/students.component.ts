@@ -18,10 +18,13 @@ export class StudentsComponent implements OnInit {
   ngOnInit() {
     this._user.getByRole(UserRole.STUDENT).subscribe(
       users => {
-        console.log(users); 
         this.users = users; 
       }
     ); 
+  }
+
+  onUpdate(){
+    this.ngOnInit(); 
   }
 
 }
